@@ -1,0 +1,217 @@
+{% extends "base.html" %} {% block title %}Game Page {% endblock %} {% block
+content %}
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<style>
+  /* Style for the form */
+  form {
+    margin-top: 20px;
+    width: 40%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  input[type="submit"] {
+    background-color: #6495ed;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 50%;
+    margin: 0 auto;
+  }
+  input[type="submit"]:hover {
+    background-color: #4285f4;
+  }
+</style>
+
+<!-- HTML code for the form -->
+<form method="POST" style="margin-top: 30px">
+  <label for="my-input">Type your food guess:</label>
+  <input type="text" id="my-input" name="my-input" />
+  <br />
+  <input type="submit" value="Submit" />
+</form>
+
+<style>
+  table {
+    border-collapse: collapse;
+    margin-top: 75px;
+    width: 100%;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+</style>
+{% if isright %}
+<div
+  style="
+    background-color: #AFE1AF;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: 'Playfair Display', serif;
+  "
+>
+  <h1 style="color: white; text-align: center">
+    Congratulations, {{answer}} is the answer for today!!
+  </h1>
+</div>
+{%endif%}
+
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Carbohydrates (g)</th>
+      <th>Fats (g)</th>
+      <th>Protein (g)</th>
+      <th>Sodium (mg)</th>
+      <th>Sugars (g)</th>
+      <th>Vitamin C (mg)</th>
+      <th>Calories (kcal)</th>
+    </tr>
+  </thead>
+  <tbody style= "overflow-y: scroll;">
+    {%for food in foodguess%}
+
+    <tr>
+      <td>{{ food["name"] }}</td>
+      <td style="background-color: {% if food["carbohydrates"] > answerdict["carbohydrates"] %}#EEDC82{% elif food["carbohydrates"] < answerdict["carbohydrates"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["carbohydrates"] }}{% if food["carbohydrates"] >
+        answerdict["carbohydrates"] %}
+        <p><i class="fas fa-angle-double-down"></i> LOWER!!</p>
+
+        {% elif food["carbohydrates"] < answerdict["carbohydrates"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["fats"] > answerdict["fats"] %}#EEDC82{% elif food["fats"] < answerdict["fats"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["fats"] }}{% if food["fats"] > answerdict["fats"] %}
+        <p><i class="fas fa-angle-double-down"></i> LOWER!!</p>
+
+        {% elif food["fats"] < answerdict["fats"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["protein"] > answerdict["protein"] %}#EEDC82{% elif food["protein"] < answerdict["protein"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["protein"] }}{% if food["protein"] > answerdict["protein"] %}
+        <p><i class="fas fa-angle-double-down"></i> LOWER!!</p>
+
+        {% elif food["protein"] < answerdict["protein"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["sodium"] > answerdict["sodium"] %}#EEDC82{% elif food["sodium"] < answerdict["sodium"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["sodium"]}}{% if food["sodium"] > answerdict["sodium"] %}
+        <p>
+          <i class="fas fa-angle-double-down"></i>
+          </i> LOWER!!!
+        </p>
+
+        {% elif food["sodium"] < answerdict["sodium"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["sugars"] > answerdict["sugars"] %}#EEDC82{% elif food["sugars"] < answerdict["sugars"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["sugars"] }}{% if food["sugars"] > answerdict["sugars"] %}
+        <p><i class="fas fa-angle-double-down"></i> LOWER!!</p>
+
+        {% elif food["sugars"] < answerdict["sugars"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["vitamin_c"] > answerdict["vitamin_c"] %}#EEDC82{% elif food["vitamin_c"] < answerdict["vitamin_c"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["vitamin_c"] }}{% if food["vitamin_c"] > answerdict["vitamin_c"]
+        %}
+        <p><i class="fas fa-angle-double-down"></i> LOWER!!</p>
+
+        {% elif food["vitamin_c"] < answerdict["vitamin_c"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+      <td style="background-color: {% if food["calories"] > answerdict["calories"] %}#EEDC82{% elif food["calories"] < answerdict["calories"] %}#EEDC82{% else %}#AFE1AF{% endif %}">
+        {{ food["calories"] }}{% if food["calories"] >answerdict["calories"] %}
+        <p>
+          <i class="fas fa-angle-double-down"></i> LOWER!!
+        </p>
+
+        {% elif food["calories"] <answerdict["calories"] %}
+        <p><i class="fas fa-angle-double-down fa-rotate-180"></i> HIGHER!!</p>
+        {% endif %}
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+<footer
+style="
+  display: flex;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  position: sticky;
+  bottom: 0;
+  width: 100%:
+"
+>
+<div class="rectangle">2023</div>
+<div class="rectangle">
+  <a> NutriGuess</a>
+</div>
+<div class="rectangle">
+  <a href="mailto:13owenliu@gmail.com">Contact Us</a>
+</div>
+</footer>
+{%endblock%}

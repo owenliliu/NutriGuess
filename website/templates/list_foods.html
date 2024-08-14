@@ -1,0 +1,115 @@
+{% extends "base.html" %} {% block title %}List of foods!{% endblock %} {% block
+content %}
+<style>
+  .food-box {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+  }
+  .containerbox {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>
+
+<h1
+  style="
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    margin-top: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+  "
+>
+  Here is the list of foods that is included in our web game!
+</h1>
+<div class="containerbox">
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/avocado"
+      ><strong>Avocado</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/banana"
+      ><strong>Banana</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/beef"><strong>Beef</strong></a>
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/carrots"
+      ><strong>Carrots</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/cheese"
+      ><strong>Cheese</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/egg"><strong>Egg</strong></a>
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/mushroom"
+      ><strong>Mushroom</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/pork"><strong>Pork</strong></a>
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/salmon"
+      ><strong>Salmon</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/peanut-butter"
+      ><strong>Peanut Butter</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/broccoli"
+      ><strong>Broccoli</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/spinach"
+      ><strong>Spinach</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/lentils"
+      ><strong>Lentils</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/quinoa"
+      ><strong>Quinoa</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/grapes"
+      ><strong>Grapes</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/chicken-breast"
+      ><strong>Chicken breast</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/sweet-potato"
+      ><strong>Sweet potato</strong></a
+    >
+  </p>
+  <p class="food-box">
+    <a href="https://www.nutritionix.com/food/tuna" ,><strong>Tuna</strong></a>
+  </p>
+</div>
+
+{%endblock%}
